@@ -77,4 +77,26 @@ tbl_summary(
   # replace the column headers and make them bold
   modify_header(label = "**Variable**", p.value = "**P**")
 
+tbl_summary(
+	nlsy,
+	by = sex_cat,
+	include= c(sex_cat, race_eth_cat, region_cat,
+						 eyesight_cat, glasses, age_bir),
+	label = list(
+		race_eth_cat ~ "Race/ethnicity",
+		region_cat ~ "Region",
+		eyesight_cat ~ "Eyesight",
+		glasses ~ "Wears glasses",
+		age_bir ~ "Age at first birth"),
+	statistic = list(all_continuous() ~ "{median} ({p25}, {p75})", all_categorical() ~ "{n} ({p}%)"),
+
+
+		missing_text = "Missing") |>
+	add_p (test=list(all_continuous() ~"t.test",
+									all_categorical() ~ "chisq.test")) |>
+	add_overall(col_label = "**Total**") |>
+bold_labels() |>
+	modify_footnote(update = everything() ~ NA) |>
+	modify_header(label = "**Variable**", p.value = "**P**")
+
 
