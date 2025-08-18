@@ -70,7 +70,7 @@ tbl_summary(
     all_categorical() ~ "chisq.test"
   )) |>
   # add a total column with the number of observations
-  add_overall(col_label = "**Total** N = {N}") |>
+  add_overall() |>
   bold_labels() |>
   # remove the default footnotes
   modify_footnote(update = everything() ~ NA) |>
@@ -81,22 +81,29 @@ tbl_summary(
 	nlsy,
 	by = sex_cat,
 	include= c(sex_cat, race_eth_cat, region_cat,
-						 eyesight_cat, glasses, age_bir),
+						 sleep_wknd, income, sleep_wkdy),
 	label = list(
 		race_eth_cat ~ "Race/ethnicity",
 		region_cat ~ "Region",
-		eyesight_cat ~ "Eyesight",
-		glasses ~ "Wears glasses",
-		age_bir ~ "Age at first birth"),
-	statistic = list(all_continuous() ~ "{median} ({p25}, {p75})", all_categorical() ~ "{n} ({p}%)"),
-
+		sleep_wkdy ~ "Sleep on Weekdays",
+		sleep_wknd ~ "Sleep on Weekends",
+		income ~ "Income"),
+	statistic = list (sleep ~ "min = {min}; max = {max}",
+										income ~ "{p10} to {p90}"),
+	digits = list(starts_with ("sleep") ~ c (1,1),
+												 income ~ c (3,3)),
 
 		missing_text = "Missing") |>
 	add_p (test=list(all_continuous() ~"t.test",
 									all_categorical() ~ "chisq.test")) |>
-	add_overall(col_label = "**Total**") |>
+	add_overall() |>
 bold_labels() |>
 	modify_footnote(update = everything() ~ NA) |>
-	modify_header(label = "**Variable**", p.value = "**P**")
+	modify_header(label = "**Variable**", p.value = "**P**"))
 
-
+tbl_uvregression(
+	nlsy,
+	y=income,
+	include= c(sex_cat, race_eth_cat, eyesight_cat, income, age_bir),
+method = lm
+)
