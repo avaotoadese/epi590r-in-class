@@ -7,3 +7,4 @@ use_git_config(user.name = "Ava Otoadese",
                user.email = "ava.otoadese@emory.edu")
 usethis::create_github_token()
 gitcreds::gitcreds_set()
+
