@@ -86,5 +86,5 @@ table1 <- tbl_summary(
   ),
   missing_text = "Missing")
 
-inline_text(table1, variable = "region_cat", column = "female", pattern = "{n}/{N} ({p}%)")
+inline_text(table1, variable = "region_cat", column = "stat_1", pattern = "{n}/{N} ({p}%)")
 ```

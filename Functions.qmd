@@ -1,0 +1,77 @@
+---
+title: "Functions"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+```{r}
+# start out with a number to test
+x <- 5
+# you'll want your function to return this number
+x^2
+square <- function (z) {
+	squared_value <-	z*z
+	return(squared_value)
+	}
+	z <- 6
+	z*z
+	
+	square(17)
+
+
+add_two_numbers <- function (y, w) {
+	add_values <- y + w
+	return (add_values)
+}
+add_two_numbers (4,6)
+
+add_three_numbers <- function (a,b,c) {
+		add_values <- a+b+c
+		return (add_values)
+}
+add_three_numbers (42,53,78)
+
+
+```
+#raise function
+raise <- function (x,power) {
+raise <- (x^power)
+return (raise)
+}
+
+raise (x=3, power=3)
+raise (x=7, power=4)
+
+#default raise function
+raise <- function (x, power=2) {
+raise <- (x^2)
+return (raise)
+}
+
+raise (x=5)
+
+#true/false functions (calculate std)
+x <- c (23452, 1234, 235, 34634)
+sd(x)
+
+denominator <- length (x) - 1
+numerator <- sum ((x - mean_x)^2)
+
+mean_x <- mean(x)
+differences <- x - mean_x
+squared_differences <- differences^2
+# numerator <- sum(squared_differences)
+standard_dev <- sqrt(numerator / denominator)
+
+
+standard_dev <- function (sqrt(numerator / denominator)) {
+numerator
+
+}
+
+
+
