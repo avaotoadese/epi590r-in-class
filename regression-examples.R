@@ -132,3 +132,28 @@ tbl_merge(list(tbl_no_int, tbl_int),
 )
 
 
+
+
+tbl_uvregression(
+	nlsy,
+	x = sex_cat,
+	include = c(
+		nsibs, sleep_wkdy,
+		sleep_wknd, income
+	),
+	method = lm,
+)
+
+
+# poisson model
+poisson_model <- glm(nsibs ~ race_eth_cat + sex_cat +income,
+											data = nlsy, family = poisson())
+tbl_uvregression(
+		poisson_model,
+		exponentiate = TRUE,
+		include = c(
+			sex_cat, race_eth_cat,
+			income
+		),
+	method = glm,
+	method.args = list(family = poisson()))
