@@ -58,20 +58,19 @@ raise (x=5)
 x <- c (23452, 1234, 235, 34634)
 sd(x)
 
+std_dev <- function (x) {if (length(x) <= 1) return (NA)
+} else {
 denominator <- length (x) - 1
 numerator <- sum ((x - mean_x)^2)
-
 mean_x <- mean(x)
 differences <- x - mean_x
 squared_differences <- differences^2
 # numerator <- sum(squared_differences)
 standard_dev <- sqrt(numerator / denominator)
-
-
-standard_dev <- function (sqrt(numerator / denominator)) {
-numerator
-
+return(standard_dev)
 }
+
+std_dev(x)
 
 
 
