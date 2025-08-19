@@ -70,3 +70,21 @@ mean_sleep_weekend
 ```
 
 People slept an average of \`r mean_sleep_weekend\` hours during weekends.
+
+```{r}
+table1 <- tbl_summary(
+  nlsy,
+  by = sex_cat,
+  include = c(sex_cat, race_eth_cat, region_cat,
+              eyesight_cat, glasses, age_bir),
+  label = list(
+    race_eth_cat ~ "Race/ethnicity",
+    region_cat ~ "Region",
+    eyesight_cat ~ "Eyesight",
+    glasses ~ "Wears glasses",
+    age_bir ~ "Age at first birth"
+  ),
+  missing_text = "Missing")
+
+inline_text(table1, variable = "region_cat", column = "female", pattern = "{n}/{N} ({p}%)")
+```
