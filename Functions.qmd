@@ -72,5 +72,12 @@ return(standard_dev)
 
 std_dev(x)
 
+#exercise 2
 
-
+std_dev <- function (x, na.rm) {
+if (na.rm){
+# remove NA
+x <- na.omit(x)
+} else {
+# don't remove NA
+}
