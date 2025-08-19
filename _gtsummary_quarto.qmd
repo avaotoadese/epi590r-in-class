@@ -69,7 +69,7 @@ mean_sleep_weekend <- mean(nlsy$sleep_wknd, na.rm = TRUE)
 mean_sleep_weekend
 ```
 
-People slept an average of \`r mean_sleep_weekend\` hours during weekends.
+People slept an average of `r mean_sleep_weekend` hours during weekends.
 
 ```{r}
 table1 <- tbl_summary(
